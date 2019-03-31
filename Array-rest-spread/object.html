@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>object</title>
+</head>
+<body>
+    
+    <script>
+        const obj = {
+            foo: 'foo val',
+            bar: 'bar val',
+            baz: 'baz val'
+        }
+        var a = obj.foo, b = obj.bar;  //es5
+
+        const {baz, foo} = obj; //不存在顺序 ,如果结构不存在的属性则 undefined
+
+        const {baz: str1} = obj; //解构赋值
+
+        const obj1 ={
+            p:['hello',{msg:'world'}]
+        }
+        const { p: [hello, world] } = obj1;
+        
+    </script>
+</body>
+</html>

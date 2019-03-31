@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array find</title>
+</head>
+<body>
+    <script>
+        const ages = [18,20,30,40];
+
+        const this_age = ages.find((age) => age === 20); // 20
+
+        const this_age_index = ages.findIndex((age) => age === 20); //1  返回索引
+
+        const this_age_index1 = ages.findIndex((age) => age > 20);
+
+        console.log(this_age,this_age_index,this_age_index1);
+
+        const hello = [
+            {name:'李雷',age:'19'},
+            {name:'韩梅梅',age:'19'},
+            {name:'李雷1',age:'38'},
+            {name:'韩梅梅1',age:'40'},
+
+        ];
+        const find1 = hello.find((age) => age.age > 18);
+        const find2 = hello.findIndex((age) => age.age > 18);
+        const find3 = hello.filter((age) => age.age > 18);
+
+        const find4 = hello.every((age) => age.age > 18);
+
+        // const find5 = hello.some((age) => age.age > 18);
+        const find5 = hello.some((age) => { return age.age > 18});
+        console.log(find1,find2,find3,find4,find5);
+
+    </script>
+</body>
+</html>

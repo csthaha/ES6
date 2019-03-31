@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function-expand</title>
+</head>
+<body>
+    <script>
+        function Person (name) {
+            // if (!name){
+            //     name = 'default name'
+            // }
+            this.name = name || 'default name';
+        }
+        const p1 = new Person ('cst');
+        // {name: 'cst'}
+
+        const p2 = new Person();
+
+        // {name: 'default name'}
+
+        //...args 叫做 rest 参数 形式(...变量名) 
+        // 作用: 获取多余参数
+        // 将变量搭配成一个数组
+        //Rest parameter must be last 
+        const arrow_sum = (...args) => {
+            console.log(args);
+        }
+        arrow_sum(1,2,3,4);
+        const x=[1001,2002,1,2];
+        console.log( Math.max(...x));
+        //args 是一个数组
+        const arrow_sum1 = (a,...args1) => {
+            console.log(a,args1);
+        }
+        arrow_sum1(1,2,3,4);
+
+    </script>
+</body>
+</html>

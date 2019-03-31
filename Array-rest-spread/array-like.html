@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>array-like 类数组</title>
+</head>
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    
+    <script>
+
+        const obj = {
+            0: 1,
+            1: 2,
+            2: 3,
+            3: 4,
+            length : 5
+        }
+        const obj_arr = Array.from(obj);
+        //Array.from 跟着我们的 length 变化
+
+        const lis = document.querySelectorAll('li');
+         const lis_arr = Array.from(lis); 
+        //  创建为真数组 
+
+        // es5 时候,将传入的参数整理为数组的方式
+
+        function sum() {
+            const args = Array.from(arguments);
+            //Array.form 从一个类数组中创建一个真数组
+
+            console.log(arguments.map);
+        }
+        sum(1,2,3);
+
+        const arr = [2,4,6,8];
+
+        const newArr = arr.map(ele => 2 * ele);
+        //.map 就是映射的意思
+        // newArr = [4,8,12,16];
+    </script>
+</body>
+</html>

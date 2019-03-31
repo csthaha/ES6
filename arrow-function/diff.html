@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // javascript 中并没有重载 ，但是arguments 有模拟重载的作用
+        function fun1 (a,a){
+            console.log(arguments);
+
+        }
+        fun1(1,2);
+        // 前面的a 被后面的a 覆盖了
+
+        // var arrow =(a,a) => {
+        //     console.log();
+        // }
+        // arrow(1,2);
+        // 箭头函数 没有 arguments
+    </script>
+</body>
+</html>
