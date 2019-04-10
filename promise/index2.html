@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 出现 .than 是为了解决 异步 的问题 -->
+    <script>
+        const postsPromise = fetch('https://wesbos.com/wp-json/wp/v2/posts');
+        // console.log(postsPromise)
+        postsPromise.then((data)=>data.json())
+        postsPromise.then(data => console.log(data))
+    </script>
+</body>
+
+</html>
