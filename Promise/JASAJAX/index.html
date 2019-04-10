@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var xhr = null;
+        // 能上网的浏览器 都遵循 http协议 ，都有XMLHttpRequest 方法
+        if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        } else {
+            xhr = new ActiveXObject("Microsoft.XMLHttp");
+        }
+        // 请求的方法， URL , 支持同步或异步操作 false:同步，ture:异步
+        xhr.open("get", "./mock.json", true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        //设置请类型：请求头
+        // 原生函数的异步请求 必须得为之设置回调函数
+        xhr.send();
+
+        // console.log(xhr.responseText);
+
+        // console.log(xhr.readyState,xhr.status);
+
+        xhr.onreadystatechange = function () {
+            if(xhr.readystate == 4 && xhr.status == 200){
+
+                console.log(xhr.responseText);
+
+                // console.log(123456);
+            }
+        }
+
+        // 404状态码  
+        // 403状态码 拒绝访问
+        // 500 服务器 down掉了
+        // 0 接口没有访问通
+
+        
+        //为什么会产生异步？  因为js是单线程
+    </script>
+</body>
+
+</html>
