@@ -14,26 +14,28 @@
         //     console.log("done");
         // }
         // console.log('before');
-        // setTimeout(callback(),2000);
+        // setTimeout(callback,1000);
         // console.log("after");
 
         function test(resolve, reject) {
-            var timeOut = parseFloat(Math.random() * 2).toFixed(2)
+            var time = parseFloat(Math.random() * 2).toFixed(2);
             setTimeout(function () {
-                if (timeOut < 1) {
-                    resolve('该次执行花费' + timeOut + '秒')
+                if (time < 1) {
+                    resolve('该次执行花费' + time + '秒')
                 } else {
-                    reject('时间已经来到' + timeOut + '秒')
+                    reject('时间已经来到' + time + '秒')
                 }
-            }, timeOut * 1000)
+            }, time * 1000)
+
         }
-        // test();
-        // var p1 = new Promise(test)
-        // var p2 = p1.then(function (result) {
-        //     console.log('成功：' + result)
+        // test(); 不能对test() 函数调用 因为 resolve reject 不是一个function
+        
+        // var p1 = new Promise(test);
+        // var p2 = p1.then(value => {
+        //     console.log('成功:' + value)
         // })
-        // p2.catch(function (response) {
-        //     console.log('失败: ' + response)
+        // p2.catch(err => {
+        //     console.log('失败:' + err)
         // })
 
         new Promise(test)
