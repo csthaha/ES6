@@ -11,12 +11,16 @@
 <body>
     <script>
         var xhr = null;
+        //能上网的浏览器 都遵循http协议，都有XMLHttpRequest方法
         if (window.XMLHttpRequest) {
             xhr = new XMLHttpRequest();
         } else {
             xhr = new ActiveXObject("Microsoft.XMLHttp")
         }
+        //请求的方法，URL，支持同步或异步操作 false：异步，true：同步
         xhr.open("get", "/mock.json", true)
+        //设置请求类型：请求头
+        //原生函数的异步请求必须得为之设置回调函数
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
         xhr.send()
         // console.log(xhr.responseText)
@@ -24,13 +28,19 @@
         // 回调函数
         var p = new Promise((resolve, reject) => {
             xhr.onreadystatechange = function () {
+                // 在 onreadystatechange 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。
+
+                // 当 readyState 等于 4 且状态为 200 时，表示响应已就绪：
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     console.log(xhr.responseText)
                     resolve(xhr.responseText);
                     // console.log(666)
+                    console.log(xhr.readyState, xhr.status)
                 }
+                console.log(xhr.readyState, xhr.status)
             }
         })
+
         function xq() {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>promise</title>
+</head>
+
+<body>
+    <script>
+        //JavaScript 所有代码都是单线程执行 所以 异步
+        //那么怎么解决异步问题呢？
+        //异步：当你在做某件事情时，我也可以做其他事情（同步：当你做某件事时，我只有等你做完才能做其他事情）
+        //我们可以通过回调函数 来解决异步问题 例：
+
+        // function callBack(){
+        //     console.log('回调函数解决异步！');
+        // }    
+        // console.log('回调前');
+        // setTimeout(()=>{
+        //     callBack();
+        // },100)
+        // console.log('回调后');
+
+        //当我们的回调函数过多，就会造成回调地狱
+
+        // var sayHello = function(callB){
+        //     setTimeout(function(){
+        //         console.log('hello')
+        //         return callB(null)
+        //     },2000)
+        // }
+        // sayHello(function(value){
+        //     console.log('涛哥');
+        // })
+        // console.log('good');
+
+        // good hello 涛哥
+        //----------------------------------------------------
+        // var sayHello = function (name, call) {
+        //     setTimeout(function () {
+        //         console.log('hello')
+        //         console.log(name)
+        //         return call(null)
+        //     }, 2000)
+        // }
+        // sayHello('涛哥', function (value) {
+        //     sayHello('富豪', function (value) {
+        //         sayHello('老三', function (value) {
+        //             console.log('end');
+        //         })
+        //     })
+        // })
+        // console.log('预期结果：hello 涛哥，hello 富豪, hello 老三');
+
+        // 从这个例子中的回调函数就可以看出层层回调会带来 诸多不便，影响代码的可读性造成回调地狱的问题。
+        //------------------------------------------------------------------------
+
+        //那么我们怎么解决回调地狱呢？ 我们利用 Promise 去解决。
+        //Promise 中文意思 承诺。.then 后面的语句一定会执行
+
+
+        var sayHello = function (name) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    console.log('hello')
+                    resolve(name);
+                }, 1000)
+            })
+        }
+        sayHello('xiaoming')
+            .then(value => {
+
+                console.log('first:')
+                console.log(value)
+            })
+            .then(function () {
+                return sayHello('fuhao')
+            })
+            .then(value => {
+                console.log('second:')
+                console.log(value)
+            })
+            .then(function () {
+                return sayHello('tao')
+            })
+            .then(value => {
+                console.log('third:')
+                console.log(value)
+            })
+            .then(function () {
+                console.log('end')
+            })
+//---------------------------------------------------------------
+
+        // 所有任务可以分成两种，一种是同步任务（synchronous），另一种是异步任务（asynchronous）。
+        // 同步任务指的是，在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；
+        // 异步任务指的是，不进入主线程、而进入"任务队列"（task queue）的任务，
+        // 只有等主线程任务执行完毕，"任务队列"开始通知主线程，请求执行任务，该任务才会进入主线程执行。
+
+        function cB(){
+            console.log('异步1');
+        }
+        function cB2(){
+            console.log('异步2');
+        }
+        console.log('同步1');
+        setTimeout(()=>{
+            cB();
+        },1000)
+        console.log('同步2')
+        setTimeout(cB2,500);
+
+        
+    </script>
+</body>
+
+</html>
